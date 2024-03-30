@@ -34,3 +34,43 @@ def quad_eq_coefs(eq):
         return a, b, c
     return None
 
+# ------------------------------------------------------------------
+
+def quad_eq_solver(a, b, c):
+    '''
+    Függvény a másodfokú egyenlet megoldására valós számok halmazán
+  
+    Args:
+        a, b, c (float): Az együtthatók
+
+    Returns:
+        x1, x2 (float): A megoldások
+        None: Ha nincs valós megoldás
+    '''
+    # Diszkrimináns
+    dis = b*b - 4*a*c
+
+    if dis >= 0: 
+        dis_sqrt = math.sqrt(dis)
+        x1 = (-b + dis_sqrt) / (2 * a)
+        x2 = (-b - dis_sqrt) / (2 * a)
+        return x1, x2
+    return None
+
+# ------------------------------------------------------------------
+# Példa a fenti függvények alkalmazására
+
+eq = " -1*x^2 - 2.1 * x + 1 = 0"
+
+coefs = quad_eq_coefs(eq)
+if coefs:
+    print('Egyenlet: ' + eq)
+    print(f'Együtthatók: a= {coefs[0]}, b= {coefs[1]}, c= {coefs[2]}')
+    x = quad_eq_solver(*coefs)
+    if x:
+        print(f'Az egyenlet megoldásai: {x[0]}, {x[1]}.')
+    else:
+        print('Az egyenletnek nincs valós megoldása.')
+else:
+    print('Nem megfelelõ formátumú egyenlet!')
+
