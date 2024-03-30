@@ -5,29 +5,29 @@ import math
 
 def quad_eq_coefs(eq):
     '''
-    Függvény a stringként megadott másodfokú egyenlet paramétereinek 
-    kinyerésére
-    Az 1-et is ki kell írni, pl: 1*x^2 + 2*x + 1
+    FÃ¼ggvÃ©ny a stringkÃ©nt megadott mÃ¡sodfokÃº egyenlet paramÃ©tereinek 
+    kinyerÃ©sÃ©re
+    Az 1-et is ki kell Ã­rni, pl: 1*x^2 + 2*x + 1
   
     Args:
-        eq (str): A másodfokú egyenlet
+        eq (str): A mÃ¡sodfokÃº egyenlet
 
     Returns:
-        a, b, c (float): Az együtthatók
-        None: ha a bemenet nem egy másodfokú egyenlet
+        a, b, c (float): Az egyÃ¼tthatÃ³k
+        None: ha a bemenet nem egy mÃ¡sodfokÃº egyenlet
     '''
     
-    # Reguláris kifejezés az "a*x^2 + b*x + c = 0" formátumra
+    # RegulÃ¡ris kifejezÃ©s az "a*x^2 + b*x + c = 0" formÃ¡tumra
     pattern = r"^\s*([+-]?\s*\d+(\.\d+)?)\s*\*\s*x\^2" + \
                 "\s*([+-]?\s*\d+(\.\d+)?)\s*\*\s*x"    + \
                 "\s*([+-]?\s*\d+(\.\d+)?)"             + \
                 "\s*=\s*0\s*$"
 
-    # Megkeressük az illeszkedést a mintában
+    # MegkeressÃ¼k az illeszkedÃ©st a mintÃ¡ban
     match = re.match(pattern, eq)
 
     if match:
-        # Az 'a', 'b', és 'c' értékek kinyerése
+        # Az 'a', 'b', Ã©s 'c' Ã©rtÃ©kek kinyerÃ©se
         a = float(match.group(1).replace(' ', ''))
         b = float(match.group(3).replace(' ', ''))
         c = float(match.group(5).replace(' ', ''))
@@ -38,16 +38,16 @@ def quad_eq_coefs(eq):
 
 def quad_eq_solver(a, b, c):
     '''
-    Függvény a másodfokú egyenlet megoldására valós számok halmazán
+    FÃ¼ggvÃ©ny a mÃ¡sodfokÃº egyenlet megoldÃ¡sÃ¡ra valÃ³s szÃ¡mok halmazÃ¡n
   
     Args:
-        a, b, c (float): Az együtthatók
+        a, b, c (float): Az egyÃ¼tthatÃ³k
 
     Returns:
-        x1, x2 (float): A megoldások
-        None: Ha nincs valós megoldás
+        x1, x2 (float): A megoldÃ¡sok
+        None: Ha nincs valÃ³s megoldÃ¡s
     '''
-    # Diszkrimináns
+    # DiszkriminÃ¡ns
     dis = b*b - 4*a*c
 
     if dis >= 0: 
@@ -58,19 +58,19 @@ def quad_eq_solver(a, b, c):
     return None
 
 # ------------------------------------------------------------------
-# Példa a fenti függvények alkalmazására
+# PÃ©lda a fenti fÃ¼ggvÃ©nyek alkalmazÃ¡sÃ¡ra
 
 eq = " -3*x^2 - 2.1 * x + 1 = 0"
 
 coefs = quad_eq_coefs(eq)
 if coefs:
     print('Egyenlet: ' + eq)
-    print(f'Együtthatók: a= {coefs[0]}, b= {coefs[1]}, c= {coefs[2]}')
+    print(f'EgyÃ¼tthatÃ³k: a= {coefs[0]}, b= {coefs[1]}, c= {coefs[2]}')
     x = quad_eq_solver(*coefs)
     if x:
-        print(f'Az egyenlet megoldásai: {x[0]}, {x[1]}.')
+        print(f'Az egyenlet megoldÃ¡sai: {x[0]}, {x[1]}.')
     else:
-        print('Az egyenletnek nincs valós megoldása.')
+        print('Az egyenletnek nincs valÃ³s megoldÃ¡sa.')
 else:
-    print('Nem megfelelõ formátumú egyenlet!')
+    print('Nem megfelelÅ‘ formÃ¡tumÃº egyenlet!')
 
