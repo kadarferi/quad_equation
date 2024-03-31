@@ -60,7 +60,7 @@ def quad_eq_solver(a, b, c):
 # ------------------------------------------------------------------
 # Példa a fenti függvények alkalmazására
 
-eq = " -3*x^2 - 2.1 * x + 1 = 0"
+eq = " -1.1*x^2 - 2.1 * x + 1 = 0"
 
 coefs = quad_eq_coefs(eq)
 if coefs:
